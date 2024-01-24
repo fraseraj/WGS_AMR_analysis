@@ -16,10 +16,10 @@ for assem_dir in ${assem_prefix}*; do
   echo "Generating Flye draft assembly for sample ${sample_id}"
 
   #run flye
-  flye --nano-raw "${assem_dir}/QC${sample_id}.fastq.gz" --threads 16 --out-dir "${assem_dir}/flyedraftassem${sample_id}"
+  flye --nano-hq "${assem_dir}/QC${sample_id}.fastq.gz" --threads 8 --out-dir "${assem_dir}/flyeassem${sample_id}"
 
   #if/else statement to check if flye has completed succesfull - based on checking the assembly.fasta file has been produced 
-  if [ -e "${assem_dir}/flyedraftassem${sample_id}/assembly.fasta" ]; then # -e is the test condition - checking if the assembly.fasta exists.
+  if [ -e "${assem_dir}/flyeassem${sample_id}/assembly.fasta" ]; then # -e is the test condition - checking if the assembly.fasta exists.
 
     echo "Flye completed successfully for sample ${sample_id}"
 
@@ -32,7 +32,8 @@ for assem_dir in ${assem_prefix}*; do
   fi
 
   #rename the assembly.fasta file based on the sample id
-  mv "${assem_dir}/flyedraftassem${sample_id}/assembly.fasta" "${assem_dir}/flyedraftassem${sample_id}/${sample_id}_flyedraftassem.fasta"
+  mv "${assem_dir}/flyeassem${sample_id}/assembly.fasta" "${assem_dir}/flyeassem${sample_id}/${sample_id}_flyeassem.fasta"
 
 
 done
+
