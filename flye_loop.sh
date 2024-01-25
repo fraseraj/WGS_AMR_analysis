@@ -27,13 +27,14 @@ for assem_dir in ${assem_prefix}*; do
 
     echo "Error: Flye failed for sample ${sample_id}"
 
-    exit 1 #if the assembly.fasta file is not found the loop with terminate 
+    exit 1 #if the assembly.fasta file is not found the loop will terminate 
 
   fi
 
-  #rename the assembly.fasta file based on the sample id
+  #rename the assembly.fasta file and the assembly_graph.gfa files based on the sample id
   mv "${assem_dir}/flyeassem${sample_id}/assembly.fasta" "${assem_dir}/flyeassem${sample_id}/${sample_id}_flyeassem.fasta"
-
+  mv "${assem_dir}/flyeassem${sample_id}/assembly_graph.gfa" "${assem_dir}/flyeassem${sample_id}/${sample_id}_flyeassem.gfa"
 
 done
+
 
